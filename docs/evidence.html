@@ -1,0 +1,33 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>All Evidence | DipEd Portfolio</title>
+<meta name="description" content="Searchable collection of all portfolio artefacts.">
+<meta name="theme-color" content="#0f6b63">
+<link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+<div id="progress" aria-hidden="true"></div>
+<header class="site-header">
+  <div class="wrap bar">
+    <a class="logo" href="index.html"><span data-owner="name">Your Name</span> <span>· DipEd</span></a>
+    <button class="icon-btn menu-btn" id="menuBtn" aria-expanded="false" aria-controls="nav" aria-label="Toggle menu">☰</button>
+    <nav class="nav" id="nav" aria-label="Main">
+      <a href="index.html">Home</a>
+      <a href="table-of-contents.html">Contents</a>
+      <a href="evidence.html" aria-current="page">All Evidence</a>
+      <a href="contact.html">Contact</a>
+      <button class="icon-btn" id="themeToggle" type="button" aria-label="Toggle theme">☾</button>
+    </nav>
+  </div>
+</header>
+<main id="main"><div class="wrap"><div class="page-head"><h1>All Evidence</h1><p class="lead">Search and filter every artefact in the portfolio.</p></div><section class="block"><div class="tools"><input class="search" id="q" type="search" placeholder="Search by title or tag" aria-label="Search portfolio"><div id="chips" role="group" aria-label="Filter by category" style="display:flex;gap:8px;flex-wrap:wrap"></div></div><div class="grid" id="gallery"></div></section></div></main>
+<dialog id="detail" aria-label="Item details"><div class="dlg"><button class="icon-btn dlg-close" id="detailClose" type="button" aria-label="Close">✕</button><div id="detailBody"></div></div></dialog>
+<footer><div class="wrap foot"><span>© <span data-year></span> <span data-owner="name">Your Name</span> · Postgraduate Diploma in Education</span><a href="#main">Back to top ↑</a></div></footer>
+<script src="js/data.js"></script>
+<script src="js/main.js"></script>
+</body>
+</html>
