@@ -1,0 +1,6 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 360" width="640" height="360">
+<defs><linearGradient id="g2" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#e5f1ef"/><stop offset="1" stop-color="#fdf1e3"/></linearGradient></defs>
+<rect width="640" height="360" fill="url(#g2)"/>
+<circle cx="80" cy="70" r="62" fill="#fff" opacity=".55"/><circle cx="575" cy="300" r="82" fill="#d9822b" opacity=".14"/><circle cx="560" cy="60" r="26" fill="#0f6b63" opacity=".12"/><circle cx="120" cy="305" r="16" fill="#d9822b" opacity=".35"/>
+<path d="M320 125Q250 98 170 118V258Q250 236 320 262Z" fill="#fff" stroke="#0f6b63" stroke-width="8" stroke-linecap="round" stroke-linejoin="round"/><path d="M320 125Q390 98 470 118V258Q390 236 320 262Z" fill="#fff" stroke="#0f6b63" stroke-width="8" stroke-linecap="round" stroke-linejoin="round"/><path d="M320 125V262" stroke="#0f6b63" stroke-width="8" stroke-linecap="round" stroke-linejoin="round" fill="none"/><g fill="none" stroke="#7cc4b9" stroke-width="7" stroke-linecap="round"><path d="M200 155q50-12 90 5M200 185q50-12 90 5M200 215q50-12 90 5M350 160q40-17 90-5M350 190q40-17 90-5"/></g><path d="M418 112v58l16-12 16 12v-58Z" fill="#d9822b"/>
+</svg>
