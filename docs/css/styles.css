@@ -266,3 +266,8 @@ dialog::backdrop{background:rgba(8,16,30,.7)}
 .orn span{width:9px;height:9px;transform:rotate(45deg);border:1.5px solid var(--gold);flex:none}
 footer{background-image:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='64' height='64' viewBox='0 0 64 64'><path d='M32 0L64 32L32 64L0 32Z' fill='none' stroke='%23ffffff' stroke-opacity='0.04' stroke-width='1'/></svg>")}
 @media print{.titlepage::before,.titlepage::after,.orn{display:none}}
+
+/* ---------- part description (from the author's captions) ---------- */
+.caption{max-width:72ch;margin:0 0 36px}
+.caption p{margin:0 0 1em;line-height:1.8}
+.caption p:first-child{font-size:1.12rem;color:var(--ink)}

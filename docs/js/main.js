@@ -119,7 +119,7 @@
   document.addEventListener("click", (e) => {
     const b = e.target.closest(".yt-play"); if (!b) return;
     const box = b.closest(".yt"), id = box.dataset.yt;
-    box.innerHTML = `<iframe src="https://www.youtube-nocookie.com/embed/${encodeURIComponent(id)}?autoplay=1&rel=0" title="Transformations video" allow="autoplay; encrypted-media; picture-in-picture; fullscreen" allowfullscreen referrerpolicy="strict-origin-when-cross-origin"></iframe>`;
+    box.innerHTML = `<iframe src="https://www.youtube-nocookie.com/embed/${encodeURIComponent(id)}?autoplay=1&rel=0" title="Technology Integration 2 (video on YouTube)" allow="autoplay; encrypted-media; picture-in-picture; fullscreen" allowfullscreen referrerpolicy="strict-origin-when-cross-origin"></iframe>`;
   });
 
   reveal();
