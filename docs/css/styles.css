@@ -229,3 +229,20 @@ dialog{max-height:92vh;overflow:auto}
 .writeup .dl .btn{margin:4px 8px 4px 0}
 
 main{min-width:0}
+
+/* ---- v4: lettered parts, logo, on-this-page ---- */
+.logo-text{display:flex;flex-direction:column;line-height:1.15}
+.logo-name{font-weight:800;letter-spacing:-.01em}
+.logo-sub{font-size:.7rem;font-weight:600;color:var(--muted);letter-spacing:0}
+@media (max-width:420px){.logo-sub{font-size:.62rem}}
+.lettered{list-style:none;padding-left:0!important}
+.lettered li{margin:.35rem 0}
+.onpage{margin:0 0 8px;padding:12px 18px;background:var(--tint);border-radius:var(--radius)}
+.onpage ul{margin:.4em 0 0;padding-left:1.2rem;columns:2;column-gap:28px}
+@media (max-width:640px){.onpage ul{columns:1}}
+.onpage a{text-decoration:none}
+.onpage a:hover{text-decoration:underline}
+.writeup,[id]{scroll-margin-top:84px}
+.dash{display:block}
+.dash .stat-row{margin-top:24px;grid-template-columns:repeat(auto-fit,minmax(180px,1fr))}
+.groups .grp{margin:32px 0 12px;font-size:1.25rem;color:var(--brand)}

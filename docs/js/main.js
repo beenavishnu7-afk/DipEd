@@ -42,26 +42,8 @@
   $$("[data-year]").forEach((el) => { el.textContent = new Date().getFullYear(); });
   const mail = $("#mailBtn"); if (mail && P.owner.email) { mail.href = "mailto:" + P.owner.email; mail.textContent = P.owner.email; }
 
-  // ---- section progress (stored only in this browser)
-  const TOTAL = $$(".side-box li").length || +($("#progMeter")?.getAttribute("aria-valuemax")) || 15;
-  const getDone = () => { try { return JSON.parse(store.get("done")) || []; } catch { return []; } };
-  const paintDone = () => {
-    const done = getDone();
-    $$("[data-tick]").forEach((el) => { const on = done.includes(el.dataset.tick); if (el.classList.contains("done-flag")) el.hidden = !on; else el.classList.toggle("on", on); });
-    const slug = document.body.dataset.slug, btn = $("[data-done]");
-    if (btn && slug) { const on = done.includes(slug); btn.setAttribute("aria-pressed", on); btn.textContent = on ? "✓ Marked as read (click to undo)" : "Mark section as read"; }
-    const fill = $("#progFill"), meter = $("#progMeter"), txt = $("#progText");
-    if (fill) { fill.style.width = (done.length / TOTAL) * 100 + "%"; meter.setAttribute("aria-valuenow", done.length); txt.textContent = `${done.length} of ${TOTAL} sections marked as read`; }
-  };
-  $("[data-done]")?.addEventListener("click", (e) => {
-    const slug = e.currentTarget.dataset.done, done = getDone(), i = done.indexOf(slug);
-    if (i >= 0) done.splice(i, 1); else done.push(slug);
-    store.set("done", JSON.stringify(done)); paintDone();
-  });
-  paintDone();
-
   // ---- cards
-  const CAT_IMG = { "Purpose Statement": "purpose-statement", "Philosophy": "initial-philosophy", "Unit of instruction": "sample-unit", "Lesson plan": "lesson-plans", "Task analysis": "task-analysis", "Scaffolding": "instructional-scaffolding", "Peer discussion": "peer-discussion", "Technology": "technology", "Performance assessment": "performance-assessment", "Classroom assessment": "classroom-assessment", "Curriculum integration": "curriculum-integration", "Adaptation": "adaptation-to-change", "Instructional objectives": "instructional-objectives", "Reflection": "reflective-summary", "Teaching practice": "teaching-practice" };
+  const CAT_IMG = { "A - Introduction": "purpose-statement", "B - Unit and Lesson Planning": "lesson-plans", "C - Technology Integration": "technology", "D - Growth in Assessment Component": "performance-assessment", "E - Transformations": "curriculum-integration", "F - Reflective Summary": "reflective-summary" };
   const card = (i) => `
     <article class="card reveal${i.placeholder ? " placeholder" : ""}">
       ${i.thumb ? `<img class="thumb photo" src="${esc(i.thumb)}" alt="" width="640" height="480" loading="lazy" decoding="async">` : CAT_IMG[i.category] ? `<img class="thumb" src="assets/img/${CAT_IMG[i.category]}.svg" alt="" width="640" height="360" loading="lazy" decoding="async">` : ""}
@@ -75,7 +57,7 @@
   const stats = $("#stats");
   if (stats) {
     const cats = {}; P.items.forEach((i) => cats[i.category] = (cats[i.category] || 0) + 1);
-    stats.innerHTML = `<div class="stat"><strong>${P.items.length}</strong>Artefacts</div><div class="stat"><strong>${Object.keys(cats).length}</strong>Categories</div>`;
+    stats.innerHTML = `<div class="stat"><strong>${P.items.length}</strong>Documents and files</div><div class="stat"><strong>${Object.keys(cats).length} of 6</strong>Parts with content</div>`;
   }
   const featured = $("#featured");
   if (featured) featured.innerHTML = P.items.slice(0, 3).map(card).join("");
@@ -92,7 +74,11 @@
     const draw = () => {
       const term = (q?.value || "").toLowerCase();
       const list = all.filter((i) => (cat === "All" || i.category === cat) && (i.title + i.summary + i.tags.join(" ")).toLowerCase().includes(term));
-      gallery.innerHTML = list.length ? list.map(card).join("") : `<p class="empty">${all.length ? "Nothing matches that search." : "Documents for this section are coming soon."}</p>`;
+      if (!fixed.length && list.length) {
+        const order = Object.keys(CAT_IMG);
+        gallery.className = "groups";
+        gallery.innerHTML = order.filter((c) => list.some((i) => i.category === c)).map((c) => `<h2 class="grp">${esc(c)}</h2><div class="grid">${list.filter((i) => i.category === c).map(card).join("")}</div>`).join("");
+      } else { gallery.className = "grid"; gallery.innerHTML = list.length ? list.map(card).join("") : `<p class="empty">${all.length ? "Nothing matches that search." : "Documents for this part are coming soon."}</p>`; }
       if (count) count.textContent = `${list.length} item${list.length === 1 ? "" : "s"} shown`;
       reveal();
     };
