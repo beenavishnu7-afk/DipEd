@@ -43,7 +43,7 @@
   const mail = $("#mailBtn"); if (mail && P.owner.email) { mail.href = "mailto:" + P.owner.email; mail.textContent = P.owner.email; }
 
   // ---- cards
-  const PARTS = ["A - Introduction", "B - Unit and Lesson Planning", "C - Technology Integration", "D - Growth in Assessment Component", "E - Transformations", "F - Reflective Summary"];
+  const PARTS = ["A - Introduction", "B - Unit and Lesson Planning", "C - Technology Integration", "D - Growth in Assessment Competency", "E - Transformations", "F - Reflective Summary"];
   const card = (i) => `
     <li class="doc-row">
       <a class="doc-title" href="${esc(i.page)}">${esc(i.title)}</a>
@@ -66,7 +66,7 @@
     const all = P.items.filter((i) => !fixed.length || fixed.includes(i.category));
     const chipsEl = $("#chips"), q = $("#q"), count = $("#count");
     let cat = "All";
-    const cats = ["All", ...new Set(all.map((i) => i.category))];
+    const cats = ["All", ...PARTS.filter((c) => all.some((i) => i.category === c))];
     if (chipsEl) chipsEl.innerHTML = (cats.length > 2 ? cats : []).map((c) => `<button class="chip" type="button" aria-pressed="${c === "All"}">${esc(c)}</button>`).join("");
     const draw = () => {
       const term = (q?.value || "").toLowerCase();
