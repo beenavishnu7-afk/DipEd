@@ -43,16 +43,13 @@
   const mail = $("#mailBtn"); if (mail && P.owner.email) { mail.href = "mailto:" + P.owner.email; mail.textContent = P.owner.email; }
 
   // ---- cards
-  const CAT_IMG = { "A - Introduction": "purpose-statement", "B - Unit and Lesson Planning": "lesson-plans", "C - Technology Integration": "technology", "D - Growth in Assessment Component": "performance-assessment", "E - Transformations": "curriculum-integration", "F - Reflective Summary": "reflective-summary" };
+  const PARTS = ["A - Introduction", "B - Unit and Lesson Planning", "C - Technology Integration", "D - Growth in Assessment Component", "E - Transformations", "F - Reflective Summary"];
   const card = (i) => `
-    <article class="card reveal${i.placeholder ? " placeholder" : ""}">
-      ${i.thumb ? `<img class="thumb photo" src="${esc(i.thumb)}" alt="" width="640" height="480" loading="lazy" decoding="async">` : CAT_IMG[i.category] ? `<img class="thumb" src="assets/img/${CAT_IMG[i.category]}.svg" alt="" width="640" height="360" loading="lazy" decoding="async">` : ""}
-      <div><span class="tag">${esc(i.category)}</span></div>
-      <h3>${esc(i.title)}</h3>
-      <p class="meta">${i.date ? esc(i.date) + " · " : ""}${i.tags.map(esc).join(", ")}</p>
+    <li class="doc-row">
+      <a class="doc-title" href="${esc(i.page)}">${esc(i.title)}</a>
+      <span class="doc-tags">${i.tags.map(esc).join(" · ")}</span>
       <p>${esc(i.summary)}</p>
-      <a class="more" href="${esc(i.page)}">View in portfolio →</a>
-    </article>`;
+    </li>`;
 
   const stats = $("#stats");
   if (stats) {
@@ -74,11 +71,10 @@
     const draw = () => {
       const term = (q?.value || "").toLowerCase();
       const list = all.filter((i) => (cat === "All" || i.category === cat) && (i.title + i.summary + i.tags.join(" ")).toLowerCase().includes(term));
-      if (!fixed.length && list.length) {
-        const order = Object.keys(CAT_IMG);
+      if (list.length) {
         gallery.className = "groups";
-        gallery.innerHTML = order.filter((c) => list.some((i) => i.category === c)).map((c) => `<h2 class="grp">${esc(c)}</h2><div class="grid">${list.filter((i) => i.category === c).map(card).join("")}</div>`).join("");
-      } else { gallery.className = "grid"; gallery.innerHTML = list.length ? list.map(card).join("") : `<p class="empty">${all.length ? "Nothing matches that search." : "Documents for this part are coming soon."}</p>`; }
+        gallery.innerHTML = PARTS.filter((c) => list.some((i) => i.category === c)).map((c) => `<h2 class="grp">${esc(c)}</h2><ul class="doc-list">${list.filter((i) => i.category === c).map(card).join("")}</ul>`).join("");
+      } else { gallery.className = ""; gallery.innerHTML = `<p class="empty">${all.length ? "Nothing matches that search." : "Documents for this part are coming soon."}</p>`; }
       if (count) count.textContent = `${list.length} item${list.length === 1 ? "" : "s"} shown`;
       reveal();
     };
@@ -97,7 +93,7 @@
       let shown = 0;
       rows.forEach((li) => { const m = !term || li.textContent.toLowerCase().includes(term); li.hidden = !m; if (m) shown++; });
       const hits = term ? P.items.filter((i) => (i.title + i.summary + i.category + i.tags.join(" ")).toLowerCase().includes(term)) : [];
-      res.innerHTML = hits.length ? `<h2 style="grid-column:1/-1">Matching evidence</h2>` + hits.map(card).join("") : "";
+      res.innerHTML = hits.length ? `<h2 class="grp">Matching evidence</h2><ul class="doc-list">${hits.map(card).join("")}</ul>` : "";
       cnt.textContent = `${shown} section${shown === 1 ? "" : "s"} and ${hits.length} evidence item${hits.length === 1 ? "" : "s"} match`;
       reveal();
     };
