@@ -121,8 +121,8 @@ dialog::backdrop{background:rgba(0,0,0,.55)}
 }
 
 /* section layout */
-.layout{display:grid;grid-template-columns:260px 1fr;gap:40px;align-items:start;padding-top:8px}
-@media (max-width:900px){.layout{grid-template-columns:1fr;gap:0}}
+.layout{display:grid;grid-template-columns:260px minmax(0,1fr);gap:40px;align-items:start;padding-top:8px}
+@media (max-width:900px){.layout{grid-template-columns:minmax(0,1fr);gap:0}}
 .side{position:sticky;top:80px}
 @media (max-width:900px){.side{position:static;margin-top:16px}}
 .side-box{padding:12px 16px}
@@ -184,3 +184,48 @@ body>.wrap>.page-head,main>.wrap>.page-head{padding-left:0}
 .foot-links{display:flex;gap:16px;flex-wrap:wrap}
 .privacy{flex-basis:100%;margin:8px 0 0;font-size:.85rem}
 .nav a{white-space:nowrap}
+
+/* ---- written content ---- */
+.writeup{max-width:72ch;margin:32px 0;background:var(--surface);border:1px solid var(--line);border-radius:var(--radius);padding:28px clamp(18px,4vw,36px);box-shadow:var(--shadow)}
+.writeup>h2:first-child{margin-top:0}
+.writeup h2{margin-top:1.6em}
+.writeup h3{margin:1.6em 0 .5em;font-size:1.1rem;color:var(--brand);line-height:1.4}
+.writeup p{margin:0 0 1em;line-height:1.75}
+.writeup a{overflow-wrap:anywhere}
+.writeup .dl{margin:1.6em 0 0;padding-top:1em;border-top:1px solid var(--line)}
+.sec-head + .writeup{margin-top:0}
+.tools[hidden]{display:none}
+
+/* ---- photos ---- */
+.about{padding:40px 0 8px}
+.about-grid{display:grid;grid-template-columns:200px 1fr;gap:28px;align-items:center;background:var(--surface);border:1px solid var(--line);border-radius:var(--radius);padding:24px;box-shadow:var(--shadow)}
+@media (max-width:640px){.about-grid{grid-template-columns:1fr;justify-items:start}}
+.portrait{margin:0}
+.portrait img{width:200px;height:auto;aspect-ratio:3/4;object-fit:cover;object-position:50% 25%;border-radius:18px;border:1px solid var(--line)}
+.about h2{margin-top:0}
+.writeup.wide{max-width:none}
+.photo-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(230px,1fr));gap:16px;margin:16px 0}
+.photo-grid figure,.solo{margin:0}
+.photo-btn{display:block;width:100%;padding:0;border:1px solid var(--line);border-radius:12px;overflow:hidden;background:var(--tint);cursor:zoom-in}
+.photo-btn img{width:100%;height:auto;aspect-ratio:4/3;object-fit:cover;transition:transform .25s}
+.photo-btn:hover img{transform:scale(1.03)}
+figcaption{font-size:.9rem;color:var(--muted);margin-top:6px}
+.solo{max-width:420px;margin:28px 0}
+.solo img{width:100%;height:auto;border-radius:var(--radius);border:1px solid var(--line);box-shadow:var(--shadow)}
+.thumb.photo{aspect-ratio:4/3;object-position:50% 40%}
+.dlg-img{width:100%;height:auto;max-height:70vh;object-fit:contain;border-radius:10px;background:var(--tint)}
+dialog{max-height:92vh;overflow:auto}
+
+/* ---- lesson plans, slides, media ---- */
+.table-wrap{overflow-x:auto;margin:1em 0;border:1px solid var(--line);border-radius:10px}
+.writeup table{border-collapse:collapse;width:100%;font-size:.95rem;min-width:560px}
+.writeup th,.writeup td{border:1px solid var(--line);padding:8px 10px;vertical-align:top;text-align:left}
+.writeup td p,.writeup th p{margin:0 0 .5em}
+.writeup td ul,.writeup td ol{margin:.3em 0;padding-left:1.2rem}
+.writeup video{width:100%;height:auto;max-width:720px;border-radius:12px;background:#000;display:block;margin:12px 0}
+.writeup audio{width:100%;max-width:520px;display:block;margin:12px 0}
+.slides .photo-btn img{aspect-ratio:16/9;object-fit:contain;background:#fff}
+.slides .photo-grid{grid-template-columns:repeat(auto-fill,minmax(200px,1fr))}
+.writeup .dl .btn{margin:4px 8px 4px 0}
+
+main{min-width:0}
