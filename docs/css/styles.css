@@ -146,7 +146,7 @@ body>.wrap>.page-head,main>.wrap>.page-head{padding-left:0}
 /* ---- v2: graphics, dashboard, preferences ---- */
 .sr{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
 .logo{display:flex;align-items:center;gap:8px}
-.logo img{border-radius:8px}
+.logo img{border-radius:0}
 .tools-group{display:flex;gap:6px;align-items:center;margin-left:6px}
 .icon-btn.sm{width:36px;height:36px;font-size:.8rem;font-weight:700}
 .hero-fig{margin:0}
@@ -246,3 +246,31 @@ main{min-width:0}
 .dash{display:block}
 .dash .stat-row{margin-top:24px;grid-template-columns:repeat(auto-fit,minmax(180px,1fr))}
 .groups .grp{margin:32px 0 12px;font-size:1.25rem;color:var(--brand)}
+
+/* ---- v5: portrait logo, spacing, plain lettered contents ---- */
+.bar{min-height:76px}
+.logo{gap:14px}
+.logo-photo{width:56px;height:56px;border-radius:50%;object-fit:cover;object-position:50% 30%;border:2px solid var(--brand);background:var(--tint);flex:none}
+.logo-text{gap:5px;line-height:1.2}
+.logo-sub{font-size:.78rem;letter-spacing:.01em}
+@media (max-width:420px){.logo-photo{width:46px;height:46px}.logo-text{gap:3px}.logo-sub{font-size:.66rem}}
+.side-box ul.lettered{list-style:none;margin:8px 0 0;padding:0}
+.side-box ul.lettered li{list-style:none;margin:.45rem 0}
+.side-box ul.lettered li::marker{content:""}
+@media (max-width:900px){.nav{top:76px}}
+.logo img.logo-photo{border-radius:50%}
+
+/* ---- YouTube click-to-play ---- */
+.yt{position:relative;width:100%;max-width:720px;aspect-ratio:16/9;border-radius:12px;overflow:hidden;background:linear-gradient(135deg,#12332f,#0f6b63)}
+.yt-play{position:absolute;inset:0;width:100%;border:0;background:transparent;color:#fff;font-size:1.3rem;font-weight:700;cursor:pointer;display:flex;align-items:center;justify-content:center;gap:12px}
+.yt-play span{display:grid;place-items:center;width:64px;height:64px;border-radius:50%;background:rgba(255,255,255,.18);border:2px solid #fff;font-size:1.5rem}
+.yt-play:hover span{background:rgba(255,255,255,.3)}
+.yt iframe{position:absolute;inset:0;width:100%;height:100%;border:0}
+
+/* ---- UWI crest beside the name ---- */
+.logo-uwi{width:56px;height:56px;border-radius:50%;object-fit:cover;border:2px solid var(--brand);background:#fff;flex:none;margin-left:2px}
+.logo.logo{min-width:0}
+.logo-text{min-width:0}
+@media (max-width:420px){.logo{gap:8px}.logo-uwi{width:46px;height:46px}.logo-sub{font-size:.6rem}.logo-name{font-size:.95rem}}
+@media (max-width:360px){.logo-photo,.logo-uwi{width:40px;height:40px}.logo-sub{font-size:.56rem}}
+.logo img.logo-uwi{border-radius:50%}
