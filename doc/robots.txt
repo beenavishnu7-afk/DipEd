@@ -1,3 +1,0 @@
-User-agent: *
-Allow: /
-Sitemap: https://beenavishnu7-afk.github.io/DipEd/sitemap.xml
